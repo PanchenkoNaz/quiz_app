@@ -6,17 +6,16 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f8ff;
+    background-color: #f7f7f7;
 }
 
-/* Сховати екран */
-.hidden {
-    display: none;
-}
-
-/* Контейнер для екранів */
 .screen {
+    display: none;
     text-align: center;
+}
+
+.screen.active {
+    display: block;
 }
 
 button {
@@ -26,7 +25,29 @@ button {
     cursor: pointer;
 }
 
-.btn-container {
+input[type="text"] {
+    padding: 8px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+#scoreboard {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.team-score {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#turn-indicator {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#category-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
