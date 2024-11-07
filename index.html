@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Головний екран -->
+    <div id="start-screen" class="screen">
+        <h1>Water Quiz</h1>
+        <button id="start-btn">Почати вікторину</button>
+    </div>
+
+    <!-- Екран запитань -->
+    <div id="quiz-screen" class="screen hidden">
+        <div id="question-container">
+            <h2 id="question">Питання буде тут</h2>
+            <div id="answer-buttons" class="btn-container">
+                <!-- Кнопки для відповідей будуть генеруватися JavaScript -->
+            </div>
+        </div>
+        <button id="next-btn" class="hidden">Наступне питання</button>
+    </div>
+
+    <!-- Екран результатів -->
+    <div id="result-screen" class="screen hidden">
+        <h2>Результат</h2>
+        <p id="score">Ваш рахунок: 0</p>
+        <button id="restart-btn">Спробувати знову</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
