@@ -1,101 +1,34 @@
-// Змінні для екрану
+// Елементи екранів
 const startScreen = document.getElementById('start-screen');
-const quizScreen = document.getElementById('quiz-screen');
-const resultScreen = document.getElementById('result-screen');
+const teamInputScreen = document.getElementById('team-input-screen');
+const categoryScreen = document.getElementById('category-screen');
 
 // Кнопки
 const startButton = document.getElementById('start-btn');
-const nextButton = document.getElementById('next-btn');
-const restartButton = document.getElementById('restart-btn');
+const startGameButton = document.getElementById('start-game-btn');
 
-// Питання та відповіді
-const questionElement = document.getElementById('question');
-const answerButtons = document.getElementById('answer-buttons');
-const scoreElement = document.getElementById('score');
+// Змінні для зберігання імен команд
+let team1Name = '';
+let team2Name = '';
 
-// Змінні для логіки гри
-let currentQuestionIndex = 0;
-let score = 0;
-
-// Приклад запитань
-const questions = [
-    {
-        question: "Скільки планет у Сонячній системі?",
-        answers: [
-            { text: "7", correct: false },
-            { text: "8", correct: true },
-            { text: "9", correct: false },
-            { text: "10", correct: false }
-        ]
-    },
-    {
-        question: "Яка найбільша країна за площею?",
-        answers: [
-            { text: "Канада", correct: false },
-            { text: "Росія", correct: true },
-            { text: "Китай", correct: false },
-            { text: "США", correct: false }
-        ]
-    }
-];
-
-// Початок вікторини
-startButton.addEventListener('click', startQuiz);
-nextButton.addEventListener('click', () => {
-    currentQuestionIndex++;
-    setNextQuestion();
+// Подія для кнопки "Start Quiz"
+startButton.addEventListener('click', () => {
+    startScreen.classList.remove('active');
+    teamInputScreen.classList.add('active');
 });
-restartButton.addEventListener('click', startQuiz);
 
-function startQuiz() {
-    startScreen.classList.add('hidden');
-    quizScreen.classList.remove('hidden');
-    resultScreen.classList.add('hidden');
-    score = 0;
-    currentQuestionIndex = 0;
-    setNextQuestion();
-}
+// Подія для кнопки "Start Game"
+startGameButton.addEventListener('click', () => {
+    team1Name = document.getElementById('team1-name').value || 'Team 1';
+    team2Name = document.getElementById('team2-name').value || 'Team 2';
 
-function setNextQuestion() {
-    resetState();
-    showQuestion(questions[currentQuestionIndex]);
-}
+    teamInputScreen.classList.remove('active');
+    categoryScreen.classList.add('active');
 
-function showQuestion(question) {
-    questionElement.innerText = question.question;
-    question.answers.forEach(answer => {
-        const button = document.createElement('button');
-        button.innerText = answer.text;
-        button.classList.add('btn');
-        if (answer.correct) {
-            button.dataset.correct = answer.correct;
-        }
-        button.addEventListener('click', selectAnswer);
-        answerButtons.appendChild(button);
-    });
-}
+    // Відображення імен команд у табло
+    document.getElementById('team1-score').innerText = `${team1Name}: 0`;
+    document.getElementById('team2-score').innerText = `${team2Name}: 0`;
 
-function resetState() {
-    nextButton.classList.add('hidden');
-    answerButtons.innerHTML = '';
-}
-
-function selectAnswer(e) {
-    const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct === 'true';
-    if (correct) score++;
-    Array.from(answerButtons.children).forEach(button => {
-        button.classList.add(button.dataset.correct ? 'correct' : 'incorrect');
-    });
-    if (questions.length > currentQuestionIndex + 1) {
-        nextButton.classList.remove('hidden');
-    } else {
-        showResult();
-    }
-}
-
-function showResult() {
-    quizScreen.classList.add('hidden');
-    resultScreen.classList.remove('hidden');
-    scoreElement.innerText = `Ваш рахунок: ${score}`;
-}
+    // Встановити початкову чергу на Team 1
+    document.getElementById('turn-indicator').innerText = `Current Turn: ${team1Name}`;
+});
