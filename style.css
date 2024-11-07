@@ -1,0 +1,33 @@
+/* Основні стилі */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f8ff;
+}
+
+/* Сховати екран */
+.hidden {
+    display: none;
+}
+
+/* Контейнер для екранів */
+.screen {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
