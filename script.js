@@ -1,34 +1,101 @@
-// Елементи екранів
-const startScreen = document.getElementById('start-screen');
-const teamInputScreen = document.getElementById('team-input-screen');
-const categoryScreen = document.getElementById('category-screen');
+// Елементи для екранів та індикаторів
+const questionScreen = document.getElementById('question-screen');
+const answerScreen = document.getElementById('answer-screen');
+const questionText = document.getElementById('question-text');
+const correctAnswerText = document.getElementById('correct-answer');
+const turnIndicator = document.getElementById('turn-indicator');
 
-// Кнопки
-const startButton = document.getElementById('start-btn');
-const startGameButton = document.getElementById('start-game-btn');
+// Кнопки та елементи керування
+const showAnswerButton = document.getElementById('show-answer-btn');
+const correctButton = document.getElementById('correct-btn');
+const incorrectButton = document.getElementById('incorrect-btn');
+const backToCategoriesButton = document.getElementById('back-to-categories-btn');
+const categoryList = document.getElementById('category-list');
 
-// Змінні для зберігання імен команд
-let team1Name = '';
-let team2Name = '';
+// Дані для категорій і запитань
+const categories = [
+    { name: "Santa Claus", question: "Where does Santa Claus live?", answer: "North Pole", used: false },
+    { name: "Christmas Tree", question: "What type of tree is commonly used as a Christmas tree?", answer: "Evergreen", used: false },
+    { name: "Snow", question: "What color is snow?", answer: "White", used: false },
+    { name: "Christmas Carols", question: "What carol contains the lyrics 'Silent night, holy night'?", answer: "Silent Night", used: false },
+    { name: "Rudolph", question: "What color is Rudolph’s nose?", answer: "Red", used: false },
+    { name: "Gifts", question: "What is traditionally placed under a Christmas tree?", answer: "Gifts", used: false },
+    { name: "Elves", question: "Who helps Santa make toys?", answer: "Elves", used: false },
+    { name: "Christmas Dinner", question: "What bird is often served as the main course of Christmas dinner?", answer: "Turkey", used: false },
+    { name: "Holiday Movies", question: "What is the title of the famous Christmas movie with Kevin McCallister?", answer: "Home Alone", used: false },
+    { name: "Christmas Stockings", question: "Where are Christmas stockings traditionally hung?", answer: "On the fireplace", used: false }
+];
 
-// Подія для кнопки "Start Quiz"
-startButton.addEventListener('click', () => {
-    startScreen.classList.remove('active');
-    teamInputScreen.classList.add('active');
+// Змінні для черги команд та рахунку
+let team1Score = 0;
+let team2Score = 0;
+let currentTurn = 1; // 1 - Team 1, 2 - Team 2
+let currentQuestionIndex = null;
+
+// Функція для завантаження категорій
+function loadCategories() {
+    categoryList.innerHTML = '';
+    categories.forEach((category, index) => {
+        const button = document.createElement('button');
+        button.innerText = category.name;
+        button.disabled = category.used; // Вимикаємо кнопку, якщо категорія використана
+        button.addEventListener('click', () => selectCategory(index));
+        categoryList.appendChild(button);
+    });
+}
+
+// Підготовка запитання для обраної категорії
+function selectCategory(index) {
+    currentQuestionIndex = index;
+    const category = categories[index];
+    category.used = true; // Позначаємо категорію як використану
+
+    // Відображення запитання
+    questionText.innerText = category.question;
+    categoryScreen.classList.remove('active');
+    questionScreen.classList.add('active');
+}
+
+// Показ відповіді
+showAnswerButton.addEventListener('click', () => {
+    const category = categories[currentQuestionIndex];
+    correctAnswerText.innerText = category.answer;
+    questionScreen.classList.remove('active');
+    answerScreen.classList.add('active');
 });
 
-// Подія для кнопки "Start Game"
-startGameButton.addEventListener('click', () => {
-    team1Name = document.getElementById('team1-name').value || 'Team 1';
-    team2Name = document.getElementById('team2-name').value || 'Team 2';
+// Обробка правильної відповіді
+correctButton.addEventListener('click', () => {
+    if (currentTurn === 1) {
+        team1Score++;
+        document.getElementById('team1-score').innerText = `${team1Name}: ${team1Score}`;
+    } else {
+        team2Score++;
+        document.getElementById('team2-score').innerText = `${team2Name}: ${team2Score}`;
+    }
+    endTurn();
+});
 
-    teamInputScreen.classList.remove('active');
+// Обробка неправильної відповіді
+incorrectButton.addEventListener('click', () => {
+    endTurn();
+});
+
+// Повернення до екрану категорій
+backToCategoriesButton.addEventListener('click', () => {
+    answerScreen.classList.remove('active');
     categoryScreen.classList.add('active');
-
-    // Відображення імен команд у табло
-    document.getElementById('team1-score').innerText = `${team1Name}: 0`;
-    document.getElementById('team2-score').innerText = `${team2Name}: 0`;
-
-    // Встановити початкову чергу на Team 1
-    document.getElementById('turn-indicator').innerText = `Current Turn: ${team1Name}`;
+    loadCategories(); // Оновлення кнопок категорій
 });
+
+// Закінчення ходу і зміна черги
+function endTurn() {
+    answerScreen.classList.remove('active');
+    categoryScreen.classList.add('active');
+    currentTurn = currentTurn === 1 ? 2 : 1; // Змінюємо чергу
+    turnIndicator.innerText = `Current Turn: ${currentTurn === 1 ? team1Name : team2Name}`;
+    loadCategories(); // Оновлення кнопок категорій
+}
+
+// Ініціалізація гри
+loadCategories();
