@@ -4,33 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Quiz</title>
+    <title>Christmas Quiz</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <!-- Головний екран -->
-    <div id="start-screen" class="screen">
-        <h1>Water Quiz</h1>
-        <button id="start-btn">Почати вікторину</button>
+    <div id="start-screen" class="screen active">
+        <h1>Christmas Quiz</h1>
+        <button id="start-btn">Start Quiz</button>
     </div>
 
-    <!-- Екран запитань -->
-    <div id="quiz-screen" class="screen hidden">
-        <div id="question-container">
-            <h2 id="question">Питання буде тут</h2>
-            <div id="answer-buttons" class="btn-container">
-                <!-- Кнопки для відповідей будуть генеруватися JavaScript -->
-            </div>
+    <!-- Екран введення імен команд -->
+    <div id="team-input-screen" class="screen hidden">
+        <h2>Enter Team Names</h2>
+        <input type="text" id="team1-name" placeholder="Team 1 Name">
+        <input type="text" id="team2-name" placeholder="Team 2 Name">
+        <button id="start-game-btn">Start Game</button>
+    </div>
+
+    <!-- Екран категорій -->
+    <div id="category-screen" class="screen hidden">
+        <h2>Select a Category</h2>
+        <div id="scoreboard">
+            <div id="team1-score" class="team-score"></div>
+            <div id="team2-score" class="team-score"></div>
         </div>
-        <button id="next-btn" class="hidden">Наступне питання</button>
+        <div id="turn-indicator">Current Turn: Team 1</div>
+        <div id="category-list">
+            <!-- Кнопки категорій будуть додані через JavaScript -->
+        </div>
     </div>
 
-    <!-- Екран результатів -->
-    <div id="result-screen" class="screen hidden">
-        <h2>Результат</h2>
-        <p id="score">Ваш рахунок: 0</p>
-        <button id="restart-btn">Спробувати знову</button>
+    <!-- Екран питання -->
+    <div id="question-screen" class="screen hidden">
+        <h2 id="question-text">Question Text Here</h2>
+        <button id="show-answer-btn">Show Answer</button>
+    </div>
+
+    <!-- Екран відповіді -->
+    <div id="answer-screen" class="screen hidden">
+        <h2>Correct Answer:</h2>
+        <p id="correct-answer">Answer Text Here</p>
+        <button id="correct-btn">Correct</button>
+        <button id="incorrect-btn">Incorrect</button>
+        <button id="back-to-categories-btn">Back to Categories</button>
     </div>
 
     <script src="script.js"></script>
