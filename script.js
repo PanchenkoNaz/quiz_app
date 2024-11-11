@@ -8,7 +8,7 @@ const answerScreen = document.getElementById('answer-screen');
 // Кнопки
 const startButton = document.getElementById('start-btn');
 const startGameButton = document.getElementById('start-game-btn');
-const checkAnswerButton = document.getElementById('check-answer-btn'); // Кнопка "Check Answer"
+const checkAnswerButton = document.getElementById('check-answer-btn'); // Кнопка "Show Answer"
 const correctButton = document.getElementById('correct-btn'); // Кнопка "Correct"
 const incorrectButton = document.getElementById('incorrect-btn'); // Кнопка "Incorrect"
 
@@ -81,7 +81,7 @@ function selectCategory(index) {
     }
 }
 
-// Подія для кнопки "Check Answer"
+// Подія для кнопки "Show Answer"
 checkAnswerButton.addEventListener('click', () => {
     const category = categories[0]; // Працюємо тільки для "Santa Claus"
     document.getElementById('correct-answer').innerText = `The correct answer is: ${category.answer}`;
