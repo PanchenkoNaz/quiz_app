@@ -8,9 +8,9 @@ const answerScreen = document.getElementById('answer-screen');
 // Кнопки
 const startButton = document.getElementById('start-btn');
 const startGameButton = document.getElementById('start-game-btn');
-const checkAnswerButton = document.getElementById('check-answer-btn');
-const correctButton = document.getElementById('correct-btn');
-const incorrectButton = document.getElementById('incorrect-btn');
+const checkAnswerButton = document.getElementById('check-answer-btn'); // Кнопка "Check Answer"
+const correctButton = document.getElementById('correct-btn'); // Кнопка "Correct"
+const incorrectButton = document.getElementById('incorrect-btn'); // Кнопка "Incorrect"
 
 // Змінні для зберігання імен команд та рахунків
 let team1Name = '';
