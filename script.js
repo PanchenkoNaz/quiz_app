@@ -8,9 +8,9 @@ const answerScreen = document.getElementById('answer-screen');
 // Кнопки
 const startButton = document.getElementById('start-btn');
 const startGameButton = document.getElementById('start-game-btn');
-const checkAnswerButton = document.getElementById('check-answer-btn'); // Кнопка "Show Answer"
-const correctButton = document.getElementById('correct-btn'); // Кнопка "Correct"
-const incorrectButton = document.getElementById('incorrect-btn'); // Кнопка "Incorrect"
+const checkAnswerButton = document.getElementById('check-answer-btn');
+const correctButton = document.getElementById('correct-btn');
+const incorrectButton = document.getElementById('incorrect-btn');
 
 // Змінні для зберігання імен команд та рахунків
 let team1Name = '';
@@ -45,8 +45,16 @@ startButton.addEventListener('click', () => {
 
 // Подія для кнопки "Start Game"
 startGameButton.addEventListener('click', () => {
+    // Зберігаємо введені імена команд або використовуємо значення за замовчуванням
     team1Name = document.getElementById('team1-name').value || 'Team 1';
     team2Name = document.getElementById('team2-name').value || 'Team 2';
+
+    // Оновлення табло з іменами команд та початковими балами
+    document.getElementById('team1-score').innerText = `${team1Name}: ${team1Score}`;
+    document.getElementById('team2-score').innerText = `${team2Name}: ${team2Score}`;
+
+    // Встановлення поточної черги з ім'ям команди
+    document.getElementById('turn-indicator').innerText = `Current Turn: ${currentTurn === 1 ? team1Name : team2Name}`;
 
     teamInputScreen.classList.remove('active');
     categoryScreen.classList.add('active');
@@ -111,7 +119,7 @@ function endTurn() {
     answerScreen.classList.remove('active');
     categoryScreen.classList.add('active');
 
-    // Зміна черги на іншу команду
+    // Зміна черги на іншу команду з відображенням її імені
     currentTurn = currentTurn === 1 ? 2 : 1;
     document.getElementById('turn-indicator').innerText = `Current Turn: ${currentTurn === 1 ? team1Name : team2Name}`;
     loadCategories();
