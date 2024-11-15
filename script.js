@@ -2,8 +2,8 @@
 const startScreen = document.getElementById('start-screen');
 const teamInputScreen = document.getElementById('team-input-screen');
 const categoryScreen = document.getElementById('category-screen');
-const questionScreen = document.getElementById('question-screen');
 const levelScreen = document.getElementById('level-screen'); // Екран вибору рівня складності
+const questionScreen = document.getElementById('question-screen');
 const answerScreen = document.getElementById('answer-screen');
 
 // Кнопки
@@ -84,7 +84,7 @@ function loadCategories() {
 function selectCategory(index) {
     const category = categories[index];
 
-    // Перевіряємо, що категорія містить рівні запитань
+    // Якщо в категорії є рівні запитань, відображаємо їх
     if (category.levels) {
         showLevels(category.levels);
     }
