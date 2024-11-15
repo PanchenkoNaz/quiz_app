@@ -9,8 +9,9 @@ const answerScreen = document.getElementById('answer-screen');
 // Кнопки
 const startButton = document.getElementById('start-btn');
 const startGameButton = document.getElementById('start-game-btn');
-const correctButton = document.getElementById('correct-btn');
-const incorrectButton = document.getElementById('incorrect-btn');
+const checkAnswerButton = document.getElementById('check-answer-btn'); // Кнопка "Show Answer"
+const correctButton = document.getElementById('correct-btn'); // Кнопка "Correct"
+const incorrectButton = document.getElementById('incorrect-btn'); // Кнопка "Incorrect"
 
 // Змінні для зберігання імен команд та рахунків
 let team1Name = '';
@@ -18,6 +19,7 @@ let team2Name = '';
 let team1Score = 0;
 let team2Score = 0;
 let currentTurn = 1; // Відстежуємо, яка команда відповідає (1 - Team 1, 2 - Team 2)
+let currentQuestion = null; // Зберігаємо поточне запитання
 
 // Дані для категорій
 const categories = [
@@ -109,10 +111,20 @@ function showLevels(levels) {
 
 // Функція для відображення питання
 function showQuestion(level) {
+    currentQuestion = level; // Зберігаємо поточне питання
     document.getElementById('question-text').innerText = level.question;
     levelScreen.classList.remove('active');
     questionScreen.classList.add('active');
 }
+
+// Подія для кнопки "Show Answer"
+checkAnswerButton.addEventListener('click', () => {
+    if (currentQuestion) {
+        document.getElementById('correct-answer').innerText = `The correct answer is: ${currentQuestion.answer}`;
+        questionScreen.classList.remove('active');
+        answerScreen.classList.add('active');
+    }
+});
 
 // Подія для кнопки "Correct"
 correctButton.addEventListener('click', () => {
@@ -133,7 +145,7 @@ incorrectButton.addEventListener('click', () => {
 
 // Завершення ходу та повернення до екрана категорій
 function endTurn() {
-    questionScreen.classList.remove('active');
+    answerScreen.classList.remove('active');
     categoryScreen.classList.add('active');
 
     // Зміна черги на іншу команду з відображенням її імені
