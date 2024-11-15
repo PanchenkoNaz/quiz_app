@@ -3,12 +3,12 @@ const startScreen = document.getElementById('start-screen');
 const teamInputScreen = document.getElementById('team-input-screen');
 const categoryScreen = document.getElementById('category-screen');
 const questionScreen = document.getElementById('question-screen');
+const levelScreen = document.getElementById('level-screen'); // Екран вибору рівня складності
 const answerScreen = document.getElementById('answer-screen');
 
 // Кнопки
 const startButton = document.getElementById('start-btn');
 const startGameButton = document.getElementById('start-game-btn');
-const checkAnswerButton = document.getElementById('check-answer-btn');
 const correctButton = document.getElementById('correct-btn');
 const incorrectButton = document.getElementById('incorrect-btn');
 
@@ -23,8 +23,11 @@ let currentTurn = 1; // Відстежуємо, яка команда відпо
 const categories = [
     { 
         name: "Santa Claus", 
-        question: "Where does Santa Claus live?", 
-        answer: "North Pole" 
+        levels: [
+            { level: "Easy", question: "Where does Santa Claus live?", answer: "North Pole" },
+            { level: "Medium", question: "What color is Santa's suit?", answer: "Red" },
+            { level: "Hard", question: "What is Santa's original name?", answer: "Saint Nicholas" }
+        ]
     },
     { name: "Christmas Tree" },
     { name: "Snow" },
@@ -77,25 +80,39 @@ function loadCategories() {
     });
 }
 
-// Функція для вибору категорії та відображення питання
+// Функція для вибору категорії
 function selectCategory(index) {
     const category = categories[index];
 
-    // Перевіряємо, що категорія — "Santa Claus" і містить питання
-    if (category.name === "Santa Claus") {
-        document.getElementById('question-text').innerText = category.question;
-        categoryScreen.classList.remove('active');
-        questionScreen.classList.add('active');
+    // Перевіряємо, що категорія містить рівні запитань
+    if (category.levels) {
+        showLevels(category.levels);
     }
 }
 
-// Подія для кнопки "Show Answer"
-checkAnswerButton.addEventListener('click', () => {
-    const category = categories[0]; // Працюємо тільки для "Santa Claus"
-    document.getElementById('correct-answer').innerText = `The correct answer is: ${category.answer}`;
-    questionScreen.classList.remove('active');
-    answerScreen.classList.add('active');
-});
+// Функція для відображення рівнів складності
+function showLevels(levels) {
+    levelScreen.classList.add('active');
+    categoryScreen.classList.remove('active');
+
+    const levelList = document.getElementById('level-list');
+    levelList.innerHTML = ''; // Очищення попереднього вмісту
+
+    levels.forEach((level) => {
+        const button = document.createElement('button');
+        button.className = 'level-button';
+        button.innerText = level.level;
+        button.addEventListener('click', () => showQuestion(level));
+        levelList.appendChild(button);
+    });
+}
+
+// Функція для відображення питання
+function showQuestion(level) {
+    document.getElementById('question-text').innerText = level.question;
+    levelScreen.classList.remove('active');
+    questionScreen.classList.add('active');
+}
 
 // Подія для кнопки "Correct"
 correctButton.addEventListener('click', () => {
@@ -116,7 +133,7 @@ incorrectButton.addEventListener('click', () => {
 
 // Завершення ходу та повернення до екрана категорій
 function endTurn() {
-    answerScreen.classList.remove('active');
+    questionScreen.classList.remove('active');
     categoryScreen.classList.add('active');
 
     // Зміна черги на іншу команду з відображенням її імені
