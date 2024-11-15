@@ -128,15 +128,25 @@ checkAnswerButton.addEventListener('click', () => {
 
 // Подія для кнопки "Correct"
 correctButton.addEventListener('click', () => {
-    if (currentTurn === 1) {
-        team1Score++;
-        document.getElementById('team1-score').innerText = `${team1Name}: ${team1Score}`;
-    } else {
-        team2Score++;
-        document.getElementById('team2-score').innerText = `${team2Name}: ${team2Score}`;
+    if (currentQuestion) {
+        // Визначаємо кількість балів залежно від рівня складності
+        let points = 0;
+        if (currentQuestion.level === "Easy") points = 1;
+        else if (currentQuestion.level === "Medium") points = 2;
+        else if (currentQuestion.level === "Hard") points = 3;
+
+        // Додаємо бали до відповідної команди
+        if (currentTurn === 1) {
+            team1Score += points;
+            document.getElementById('team1-score').innerText = `${team1Name}: ${team1Score}`;
+        } else {
+            team2Score += points;
+            document.getElementById('team2-score').innerText = `${team2Name}: ${team2Score}`;
+        }
     }
     endTurn();
 });
+
 
 // Подія для кнопки "Incorrect"
 incorrectButton.addEventListener('click', () => {
