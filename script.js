@@ -26,9 +26,9 @@ const categories = [
     { 
         name: "Santa Claus", 
         levels: [
-            { level: "Easy", question: "Where does Santa Claus live?", answer: "North Pole" },
-            { level: "Medium", question: "What color is Santa's suit?", answer: "Red" },
-            { level: "Hard", question: "What is Santa's original name?", answer: "Saint Nicholas" }
+            { level: "Easy", question: "Where does Santa Claus live?", answer: "North Pole", used: false },
+            { level: "Medium", question: "What color is Santa's suit?", answer: "Red", used: false },
+            { level: "Hard", question: "What is Santa's original name?", answer: "Saint Nicholas", used: false }
         ]
     },
     { name: "Christmas Tree" },
@@ -101,11 +101,14 @@ function showLevels(levels) {
     levelList.innerHTML = ''; // Очищення попереднього вмісту
 
     levels.forEach((level) => {
-        const button = document.createElement('button');
-        button.className = 'level-button';
-        button.innerText = level.level;
-        button.addEventListener('click', () => showQuestion(level));
-        levelList.appendChild(button);
+        // Показуємо тільки ті рівні, які ще не використані
+        if (!level.used) {
+            const button = document.createElement('button');
+            button.className = 'level-button';
+            button.innerText = level.level;
+            button.addEventListener('click', () => showQuestion(level));
+            levelList.appendChild(button);
+        }
     });
 }
 
@@ -143,13 +146,19 @@ correctButton.addEventListener('click', () => {
             team2Score += points;
             document.getElementById('team2-score').innerText = `${team2Name}: ${team2Score}`;
         }
+
+        // Позначаємо рівень як використаний
+        currentQuestion.used = true;
     }
     endTurn();
 });
 
-
 // Подія для кнопки "Incorrect"
 incorrectButton.addEventListener('click', () => {
+    if (currentQuestion) {
+        // Позначаємо рівень як використаний навіть для неправильних відповідей
+        currentQuestion.used = true;
+    }
     endTurn();
 });
 
