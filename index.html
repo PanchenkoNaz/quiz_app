@@ -34,6 +34,15 @@
         <div id="category-list">
             <!-- Кнопки категорій будуть додані через JavaScript -->
         </div>
+        <button id="finish-game-btn">Finish Game</button> <!-- Кнопка завершення гри -->
+    </div>
+
+    <!-- Екран вибору рівнів складності -->
+    <div id="level-screen" class="screen hidden">
+        <h2>Select Difficulty Level</h2>
+        <div id="level-list">
+            <!-- Кнопки рівнів будуть додані через JavaScript -->
+        </div>
     </div>
 
     <!-- Екран питання -->
@@ -49,11 +58,17 @@
         <button id="correct-btn">Correct</button>
         <button id="incorrect-btn">Incorrect</button>
     </div>
-    <div id="level-screen" class="screen hidden">
-        <h2>Select Difficulty Level</h2>
-        <div id="level-list">
-            <!-- Кнопки рівнів будуть додані через JavaScript -->
+
+    <!-- Фінальний екран -->
+    <div id="final-screen" class="screen hidden">
+        <h2>Game Over!</h2>
+        <div id="final-results">
+            <p id="team1-final-score"></p>
+            <p id="team2-final-score"></p>
+            <p id="winner"></p>
         </div>
+        <button id="play-again-btn">Play Again</button>
+        <button id="exit-btn">Exit</button>
     </div>
 
     <script src="script.js" defer></script>
