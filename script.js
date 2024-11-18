@@ -2,16 +2,20 @@
 const startScreen = document.getElementById('start-screen');
 const teamInputScreen = document.getElementById('team-input-screen');
 const categoryScreen = document.getElementById('category-screen');
-const levelScreen = document.getElementById('level-screen'); // Екран вибору рівня складності
+const levelScreen = document.getElementById('level-screen');
 const questionScreen = document.getElementById('question-screen');
 const answerScreen = document.getElementById('answer-screen');
+const finalScreen = document.getElementById('final-screen');
 
 // Кнопки
 const startButton = document.getElementById('start-btn');
 const startGameButton = document.getElementById('start-game-btn');
-const checkAnswerButton = document.getElementById('check-answer-btn'); // Кнопка "Show Answer"
-const correctButton = document.getElementById('correct-btn'); // Кнопка "Correct"
-const incorrectButton = document.getElementById('incorrect-btn'); // Кнопка "Incorrect"
+const checkAnswerButton = document.getElementById('check-answer-btn');
+const correctButton = document.getElementById('correct-btn');
+const incorrectButton = document.getElementById('incorrect-btn');
+const finishGameButton = document.getElementById('finish-game-btn');
+const playAgainButton = document.getElementById('play-again-btn');
+const exitButton = document.getElementById('exit-btn');
 
 // Змінні для зберігання імен команд та рахунків
 let team1Name = '';
@@ -50,58 +54,49 @@ startButton.addEventListener('click', () => {
 
 // Подія для кнопки "Start Game"
 startGameButton.addEventListener('click', () => {
-    // Зберігаємо введені імена команд або використовуємо значення за замовчуванням
     team1Name = document.getElementById('team1-name').value || 'Team 1';
     team2Name = document.getElementById('team2-name').value || 'Team 2';
 
-    // Оновлення табло з іменами команд та початковими балами
     document.getElementById('team1-score').innerText = `${team1Name}: ${team1Score}`;
     document.getElementById('team2-score').innerText = `${team2Name}: ${team2Score}`;
-
-    // Встановлення поточної черги з ім'ям команди
     document.getElementById('turn-indicator').innerText = `Current Turn: ${currentTurn === 1 ? team1Name : team2Name}`;
 
     teamInputScreen.classList.remove('active');
     categoryScreen.classList.add('active');
-
-    // Відображення категорій
     loadCategories();
 });
 
-// Функція для завантаження категорій
+// Завантаження категорій
 function loadCategories() {
     const categoryList = document.getElementById('category-list');
-    categoryList.innerHTML = ''; // Очищення попереднього вмісту
+    categoryList.innerHTML = '';
 
     categories.forEach((category, index) => {
         const button = document.createElement('div');
         button.className = 'category-button';
         button.innerText = category.name;
-        button.addEventListener('click', () => selectCategory(index)); // Додаємо обробник події
+        button.addEventListener('click', () => selectCategory(index));
         categoryList.appendChild(button);
     });
 }
 
-// Функція для вибору категорії
+// Вибір категорії
 function selectCategory(index) {
     const category = categories[index];
-
-    // Якщо в категорії є рівні запитань, відображаємо їх
     if (category.levels) {
         showLevels(category.levels);
     }
 }
 
-// Функція для відображення рівнів складності
+// Вибір рівня складності
 function showLevels(levels) {
     levelScreen.classList.add('active');
     categoryScreen.classList.remove('active');
 
     const levelList = document.getElementById('level-list');
-    levelList.innerHTML = ''; // Очищення попереднього вмісту
+    levelList.innerHTML = '';
 
     levels.forEach((level) => {
-        // Показуємо тільки ті рівні, які ще не використані
         if (!level.used) {
             const button = document.createElement('button');
             button.className = 'level-button';
@@ -112,15 +107,15 @@ function showLevels(levels) {
     });
 }
 
-// Функція для відображення питання
+// Відображення питання
 function showQuestion(level) {
-    currentQuestion = level; // Зберігаємо поточне питання
+    currentQuestion = level;
     document.getElementById('question-text').innerText = level.question;
     levelScreen.classList.remove('active');
     questionScreen.classList.add('active');
 }
 
-// Подія для кнопки "Show Answer"
+// Показ відповіді
 checkAnswerButton.addEventListener('click', () => {
     if (currentQuestion) {
         document.getElementById('correct-answer').innerText = `The correct answer is: ${currentQuestion.answer}`;
@@ -129,16 +124,10 @@ checkAnswerButton.addEventListener('click', () => {
     }
 });
 
-// Подія для кнопки "Correct"
+// Нарахування балів
 correctButton.addEventListener('click', () => {
     if (currentQuestion) {
-        // Визначаємо кількість балів залежно від рівня складності
-        let points = 0;
-        if (currentQuestion.level === "Easy") points = 1;
-        else if (currentQuestion.level === "Medium") points = 2;
-        else if (currentQuestion.level === "Hard") points = 3;
-
-        // Додаємо бали до відповідної команди
+        let points = currentQuestion.level === "Easy" ? 1 : currentQuestion.level === "Medium" ? 2 : 3;
         if (currentTurn === 1) {
             team1Score += points;
             document.getElementById('team1-score').innerText = `${team1Name}: ${team1Score}`;
@@ -146,29 +135,11 @@ correctButton.addEventListener('click', () => {
             team2Score += points;
             document.getElementById('team2-score').innerText = `${team2Name}: ${team2Score}`;
         }
-
-        // Позначаємо рівень як використаний
         currentQuestion.used = true;
     }
     endTurn();
 });
 
-// Подія для кнопки "Incorrect"
+// Пропуск балів
 incorrectButton.addEventListener('click', () => {
-    if (currentQuestion) {
-        // Позначаємо рівень як використаний навіть для неправильних відповідей
-        currentQuestion.used = true;
-    }
-    endTurn();
-});
-
-// Завершення ходу та повернення до екрана категорій
-function endTurn() {
-    answerScreen.classList.remove('active');
-    categoryScreen.classList.add('active');
-
-    // Зміна черги на іншу команду з відображенням її імені
-    currentTurn = currentTurn === 1 ? 2 : 1;
-    document.getElementById('turn-indicator').innerText = `Current Turn: ${currentTurn === 1 ? team1Name : team2Name}`;
-    loadCategories();
-}
+    if (currentQuestion) currentQuestion.used =
