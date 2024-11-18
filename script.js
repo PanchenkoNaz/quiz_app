@@ -142,4 +142,58 @@ correctButton.addEventListener('click', () => {
 
 // Пропуск балів
 incorrectButton.addEventListener('click', () => {
-    if (currentQuestion) currentQuestion.used =
+    if (currentQuestion) currentQuestion.used = true;
+    endTurn();
+});
+
+// Завершення ходу
+function endTurn() {
+    answerScreen.classList.remove('active');
+    categoryScreen.classList.add('active');
+
+    currentTurn = currentTurn === 1 ? 2 : 1;
+    document.getElementById('turn-indicator').innerText = `Current Turn: ${currentTurn === 1 ? team1Name : team2Name}`;
+    loadCategories();
+}
+
+// Завершення гри
+finishGameButton.addEventListener('click', () => {
+    showFinalResults();
+});
+
+// Відображення фінального екрану
+function showFinalResults() {
+    document.getElementById('team1-final-score').innerText = `${team1Name}: ${team1Score} points`;
+    document.getElementById('team2-final-score').innerText = `${team2Name}: ${team2Score} points`;
+
+    if (team1Score > team2Score) {
+        document.getElementById('winner').innerText = `Winner: ${team1Name}`;
+    } else if (team2Score > team1Score) {
+        document.getElementById('winner').innerText = `Winner: ${team2Name}`;
+    } else {
+        document.getElementById('winner').innerText = "It's a tie!";
+    }
+
+    categoryScreen.classList.remove('active');
+    finalScreen.classList.add('active');
+}
+
+// Почати знову
+playAgainButton.addEventListener('click', () => {
+    team1Score = 0;
+    team2Score = 0;
+    currentTurn = 1;
+
+    document.getElementById('team1-score').innerText = `${team1Name}: ${team1Score}`;
+    document.getElementById('team2-score').innerText = `${team2Name}: ${team2Score}`;
+    document.getElementById('turn-indicator').innerText = `Current Turn: ${team1Name}`;
+
+    finalScreen.classList.remove('active');
+    categoryScreen.classList.add('active');
+    loadCategories();
+});
+
+// Вихід
+exitButton.addEventListener('click', () => {
+    location.reload();
+});
