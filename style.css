@@ -52,3 +52,23 @@ input[type="text"] {
     flex-direction: column;
     gap: 10px;
 }
+
+.category-button {
+    padding: 10px;
+    margin: 5px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+}
+
+.category-button.inactive {
+    background-color: #ddd;
+    /* Сірий фон для неактивної категорії */
+    color: #999;
+    text-decoration: line-through;
+    /* Закреслений текст */
+    cursor: not-allowed;
+    /* Зміна курсора на "заборонено" */
+}
