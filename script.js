@@ -74,8 +74,19 @@ function loadCategories() {
     categories.forEach((category, index) => {
         const button = document.createElement('div');
         button.className = 'category-button';
-        button.innerText = category.name;
-        button.addEventListener('click', () => selectCategory(index));
+
+        // Перевіряємо, чи всі рівні в категорії використані
+        const allUsed = category.levels && category.levels.every(level => level.used);
+
+        // Якщо всі рівні використані, категорія стає неактивною
+        if (allUsed) {
+            button.classList.add('inactive'); // Додаємо клас для стилізації
+            button.innerText = `${category.name} (Completed)`; // Додаємо позначку
+        } else {
+            button.innerText = category.name;
+            button.addEventListener('click', () => selectCategory(index)); // Додаємо обробник події
+        }
+
         categoryList.appendChild(button);
     });
 }
