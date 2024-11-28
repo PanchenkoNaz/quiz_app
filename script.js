@@ -208,3 +208,6 @@ playAgainButton.addEventListener('click', () => {
 exitButton.addEventListener('click', () => {
     location.reload();
 });
+
+
+
