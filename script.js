@@ -43,8 +43,26 @@ const categories = [
     { name: "Elves" },
     { name: "Christmas Dinner" },
     { name: "Holiday Movies" },
-    { name: "Christmas Stockings" }
+    { name: "Christmas Stockings" },
+    // Дві нові категорії
+    { 
+        name: "Winter Wonderland", 
+        levels: [
+            { level: "Easy", question: "What is the typical color of snow?", answer: "White", used: false },
+            { level: "Medium", question: "Which month marks the start of winter?", answer: "December", used: false },
+            { level: "Hard", question: "What is the scientific term for frost?", answer: "Hoar frost", used: false }
+        ]
+    },
+    { 
+        name: "Holiday Traditions", 
+        levels: [
+            { level: "Easy", question: "What do people hang above fireplaces at Christmas?", answer: "Stockings", used: false },
+            { level: "Medium", question: "Which country is credited with starting the Christmas tree tradition?", answer: "Germany", used: false },
+            { level: "Hard", question: "What is the name of the traditional Christmas log cake?", answer: "Yule Log", used: false }
+        ]
+    }
 ];
+
 
 // Подія для кнопки "Start Quiz"
 startButton.addEventListener('click', () => {
