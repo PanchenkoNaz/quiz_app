@@ -35,18 +35,80 @@ const categories = [
             { level: "Hard", question: "What is Santa's original name?", answer: "Saint Nicholas", used: false }
         ]
     },
-    { name: "Christmas Tree" },
-    { name: "Snow" },
-    { name: "Christmas Carols" },
-    { name: "Rudolph" },
-    { name: "Gifts" },
-    { name: "Elves" },
-    { name: "Christmas Dinner" },
-    { name: "Holiday Movies" },
-    { name: "Christmas Stockings" },
-    // Дві нові категорії
     { 
-        name: "Winter Wonderland", 
+        name: "Christmas Tree",
+        levels: [
+            { level: "Easy", question: "What do people decorate for Christmas?", answer: "Christmas tree", used: false },
+            { level: "Medium", question: "What is typically placed at the top of a Christmas tree?", answer: "Star or Angel", used: false },
+            { level: "Hard", question: "What type of tree is traditionally used as a Christmas tree?", answer: "Fir tree", used: false }
+        ]
+    },
+    { 
+        name: "Snow",
+        levels: [
+            { level: "Easy", question: "What is the color of snow?", answer: "White", used: false },
+            { level: "Medium", question: "What do you call falling chunks of snow?", answer: "Snowflakes", used: false },
+            { level: "Hard", question: "What is the process of snow turning into vapor directly?", answer: "Sublimation", used: false }
+        ]
+    },
+    { 
+        name: "Christmas Carols",
+        levels: [
+            { level: "Easy", question: "What do people sing during Christmas?", answer: "Carols", used: false },
+            { level: "Medium", question: "Which carol begins with 'Silent Night'?", answer: "Silent Night", used: false },
+            { level: "Hard", question: "What is the oldest known Christmas carol?", answer: "Angel's Hymn", used: false }
+        ]
+    },
+    { 
+        name: "Rudolph",
+        levels: [
+            { level: "Easy", question: "What animal is Rudolph?", answer: "Reindeer", used: false },
+            { level: "Medium", question: "What color is Rudolph's nose?", answer: "Red", used: false },
+            { level: "Hard", question: "What is Rudolph's main job for Santa?", answer: "Lead Santa's sleigh", used: false }
+        ]
+    },
+    { 
+        name: "Gifts",
+        levels: [
+            { level: "Easy", question: "What do children receive on Christmas morning?", answer: "Gifts", used: false },
+            { level: "Medium", question: "Who is said to bring gifts to children on Christmas Eve?", answer: "Santa Claus", used: false },
+            { level: "Hard", question: "What is the tradition of leaving gifts in stockings called?", answer: "Stocking Stuffers", used: false }
+        ]
+    },
+    { 
+        name: "Elves",
+        levels: [
+            { level: "Easy", question: "Who helps Santa prepare gifts?", answer: "Elves", used: false },
+            { level: "Medium", question: "Where do Santa's elves live?", answer: "North Pole", used: false },
+            { level: "Hard", question: "What are elves often depicted wearing?", answer: "Green suits and pointy hats", used: false }
+        ]
+    },
+    { 
+        name: "Christmas Dinner",
+        levels: [
+            { level: "Easy", question: "What is a traditional meat served at Christmas dinner?", answer: "Turkey", used: false },
+            { level: "Medium", question: "What dessert is associated with Christmas?", answer: "Christmas pudding", used: false },
+            { level: "Hard", question: "What is the name of the fruitcake served at Christmas?", answer: "Panettone", used: false }
+        ]
+    },
+    { 
+        name: "Holiday Movies",
+        levels: [
+            { level: "Easy", question: "Which Christmas movie features Kevin McCallister?", answer: "Home Alone", used: false },
+            { level: "Medium", question: "What is the Grinch known for stealing?", answer: "Christmas", used: false },
+            { level: "Hard", question: "In 'It's a Wonderful Life', what does George Bailey wish for?", answer: "To never have been born", used: false }
+        ]
+    },
+    { 
+        name: "Christmas Stockings",
+        levels: [
+            { level: "Easy", question: "Where do people hang Christmas stockings?", answer: "Above the fireplace", used: false },
+            { level: "Medium", question: "What do people traditionally put in stockings?", answer: "Small gifts or treats", used: false },
+            { level: "Hard", question: "In which country did the tradition of stockings originate?", answer: "The Netherlands", used: false }
+        ]
+    },
+    { 
+        name: "Winter Wonderland",
         levels: [
             { level: "Easy", question: "What is the typical color of snow?", answer: "White", used: false },
             { level: "Medium", question: "Which month marks the start of winter?", answer: "December", used: false },
@@ -54,7 +116,7 @@ const categories = [
         ]
     },
     { 
-        name: "Holiday Traditions", 
+        name: "Holiday Traditions",
         levels: [
             { level: "Easy", question: "What do people hang above fireplaces at Christmas?", answer: "Stockings", used: false },
             { level: "Medium", question: "Which country is credited with starting the Christmas tree tradition?", answer: "Germany", used: false },
@@ -62,6 +124,7 @@ const categories = [
         ]
     }
 ];
+
 
 
 // Подія для кнопки "Start Quiz"
