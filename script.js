@@ -16,6 +16,7 @@ const incorrectButton = document.getElementById('incorrect-btn');
 const finishGameButton = document.getElementById('finish-game-btn');
 const playAgainButton = document.getElementById('play-again-btn');
 const exitButton = document.getElementById('exit-btn');
+const backToCategoriesButton = document.getElementById('back-to-categories-btn');
 
 // Змінні для зберігання імен команд та рахунків
 let team1Name = '';
@@ -198,6 +199,12 @@ function showLevels(levels) {
         }
     });
 }
+
+// Повернення до категорій
+backToCategoriesButton.addEventListener('click', () => {
+    levelScreen.classList.remove('active');
+    categoryScreen.classList.add('active');
+});
 
 // Відображення питання
 function showQuestion(level) {
