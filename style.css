@@ -1,75 +1,164 @@
-/* Основні стилі */
+/* Базові стилі */
+html {
+    font-size: 16px;
+    /* Базова одиниця: 1rem = 16px */
+}
+
+body,
+h1,
+h2,
+p,
+button,
+input {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    background-color: #121212;
+    /* Темний фон */
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
-    background-color: #f7f7f7;
 }
 
+/* Екрани */
 .screen {
     display: none;
-    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .screen.active {
-    display: block;
-}
-
-button {
-    padding: 10px 20px;
-    margin-top: 10px;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-input[type="text"] {
-    padding: 8px;
-    margin: 5px;
-    font-size: 16px;
-}
-
-#scoreboard {
     display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
+    opacity: 1;
 }
 
-.team-score {
-    font-size: 18px;
-    font-weight: bold;
+/* Заголовки */
+h1,
+h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #ff9800;
+    text-shadow: 0.1em 0.1em 0.2em #000;
 }
 
-#turn-indicator {
-    font-size: 16px;
-    margin-bottom: 20px;
+/* Кнопки */
+button {
+    background-color: #1e88e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
 }
 
+button:hover {
+    background-color: #1565c0;
+    transform: translateY(-0.1em);
+    box-shadow: 0 0.3em 0.5em rgba(0, 0, 0, 0.3);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Поля вводу */
+input {
+    width: 100%;
+    max-width: 20rem;
+    padding: 0.75rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #1e88e5;
+    border-radius: 0.5rem;
+    background-color: #202020;
+    color: #ffffff;
+}
+
+/* Категорії */
 #category-list {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 80rem;
 }
 
 .category-button {
-    padding: 10px;
-    margin: 5px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    cursor: pointer;
+    background-color: #333;
+    color: #ffcc00;
+    border: 1px solid #ffcc00;
+    border-radius: 0.5rem;
+    padding: 1rem;
     text-align: center;
-    font-size: 16px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: calc(25% - 1rem);
+    min-width: 10rem;
+    transition: all 0.3s ease;
+}
+
+.category-button:hover {
+    background-color: #444;
+    transform: scale(1.05);
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
 }
 
 .category-button.inactive {
-    background-color: #ddd;
-    /* Сірий фон для неактивної категорії */
-    color: #999;
-    text-decoration: line-through;
-    /* Закреслений текст */
+    background-color: #555;
+    color: #777;
+    border: 1px solid #666;
     cursor: not-allowed;
-    /* Зміна курсора на "заборонено" */
+    text-decoration: line-through;
+}
+
+/* Інформація про команди */
+#scoreboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 80rem;
+    margin-bottom: 1rem;
+}
+
+.team-score {
+    font-size: 1.25rem;
+    text-align: left;
+    flex: 1;
+    padding: 0.5rem;
+}
+
+/* Прозорі кнопки */
+#finish-game-btn,
+#back-to-categories-btn {
+    background-color: transparent;
+    color: #ffffff;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 2px solid transparent;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+#finish-game-btn:hover,
+#back-to-categories-btn:hover {
+    opacity: 1;
+    border-color: #1e88e5;
 }
 
