@@ -72,3 +72,39 @@ input[type="text"] {
     cursor: not-allowed;
     /* Зміна курсора на "заборонено" */
 }
+
+/* Preload Screen */
+#preload-screen {
+    background-color: #151522;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+.mainSVG {
+    width: 200px;
+    height: 200px;
+    animation: fadeOut 3s ease-in-out forwards;
+}
+
+/* Анімація зникнення Preload */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Сховати екран після зникнення */
+.hidden {
+    display: none;
+}
