@@ -29,87 +29,87 @@ let currentQuestion = null; // Зберігаємо поточне запита�
 // Дані для категорій
 const categories = [
     { 
-        name: "Santa Claus", 
+        name: "History", 
         levels: [
-            { level: "Easy", question: "Where does Santa Claus live?", answer: "North Pole", used: false },
-            { level: "Medium", question: "What color is Santa's suit?", answer: "Red", used: false },
-            { level: "Hard", question: "What is Santa's original name?", answer: "Saint Nicholas", used: false }
+            { level: "Easy", question: "Who was the first president of the United States?", answer: "George Washington", used: false },
+            { level: "Medium", question: "How many years did the Hundred Years' War last?", answer: "116 years (from 1337 to 1453)", used: false },
+            { level: "Hard", question: "Which country was the first to grant women the right to vote in 1893?", answer: "New Zealand", used: false }
         ]
     },
     { 
-        name: "Christmas Tree",
+        name: "Sport",
         levels: [
-            { level: "Easy", question: "What do people decorate for Christmas?", answer: "Christmas tree", used: false },
-            { level: "Medium", question: "What is typically placed at the top of a Christmas tree?", answer: "Star or Angel", used: false },
-            { level: "Hard", question: "What type of tree is traditionally used as a Christmas tree?", answer: "Fir tree", used: false }
+            { level: "Easy", question: "Which tennis player has the most Grand Slam titles among men (as of 2024)?", answer: "Novak Djokovic", used: false },
+            { level: "Medium", question: "Which country hosted the first FIFA World Cup?", answer: "Uruguay (1930)", used: false },
+            { level: "Hard", question: "Which country is always the first to enter the parade of participants during the opening ceremony of the Olympic Games, and which country ends the parade?", answer: "The first is Greece, the last is the host country", used: false }
         ]
     },
     { 
-        name: "Snow",
+        name: "Space",
         levels: [
-            { level: "Easy", question: "What is the color of snow?", answer: "White", used: false },
-            { level: "Medium", question: "What do you call falling chunks of snow?", answer: "Snowflakes", used: false },
-            { level: "Hard", question: "What is the process of snow turning into vapor directly?", answer: "Sublimation", used: false }
+            { level: "Easy", question: "How many planets are there in the solar system?", answer: "8", used: false },
+            { level: "Medium", question: "What is the largest object in the solar system after the Sun?", answer: "Jupiter", used: false },
+            { level: "Hard", question: "What is the name of the largest volcano in the solar system, which is located on Mars?", answer: "Olympus Mons", used: false }
         ]
     },
     { 
-        name: "Christmas Carols",
+        name: "Food",
         levels: [
-            { level: "Easy", question: "What do people sing during Christmas?", answer: "Carols", used: false },
-            { level: "Medium", question: "Which carol begins with 'Silent Night'?", answer: "Silent Night", used: false },
-            { level: "Hard", question: "What is the oldest known Christmas carol?", answer: "Angel's Hymn", used: false }
+            { level: "Easy", question: "What is the most popular drink in the world after water?", answer: "Tea", used: false },
+            { level: "Medium", question: "What kind of delicacy mushroom is grown underground and searched for with the help of dogs or pigs?", answer: "Truffle", used: false },
+            { level: "Hard", question: "Which country is the birthplace of crispy croissants?", answer: "Austria", used: false }
         ]
     },
     { 
-        name: "Rudolph",
+        name: "Fashion and style",
         levels: [
-            { level: "Easy", question: "What animal is Rudolph?", answer: "Reindeer", used: false },
-            { level: "Medium", question: "What color is Rudolph's nose?", answer: "Red", used: false },
-            { level: "Hard", question: "What is Rudolph's main job for Santa?", answer: "Lead Santa's sleigh", used: false }
+            { level: "Easy", question: "What is the name of the fabric that is the basis for jeans?", answer: "Denim", used: false },
+            { level: "Medium", question: "Which designer created the famous “little black dress”?", answer: "Coco Chanel", used: false },
+            { level: "Hard", question: "Who is the most famous male face of Dior Sauvage?", answer: "Johnny Depp", used: false }
         ]
     },
     { 
-        name: "Gifts",
+        name: "Netflix series",
         levels: [
-            { level: "Easy", question: "What do children receive on Christmas morning?", answer: "Gifts", used: false },
-            { level: "Medium", question: "Who is said to bring gifts to children on Christmas Eve?", answer: "Santa Claus", used: false },
-            { level: "Hard", question: "What is the tradition of leaving gifts in stockings called?", answer: "Stocking Stuffers", used: false }
+            { level: "Easy", question: "Which Netflix series tells the story of paranormal events in the town of Hawkins in the 1980s?", answer: "Stranger Things", used: false },
+            { level: "Medium", question: "Which Netflix series has become the most successful in the South Korean drama genre?", answer: "Squid Game", used: false },
+            { level: "Hard", question: "Which Netflix series tells the story of a British criminal group in the early 20th century?", answer: "Peaky Blinders", used: false }
         ]
     },
     { 
-        name: "Elves",
+        name: "Music",
         levels: [
-            { level: "Easy", question: "Who helps Santa prepare gifts?", answer: "Elves", used: false },
-            { level: "Medium", question: "Where do Santa's elves live?", answer: "North Pole", used: false },
-            { level: "Hard", question: "What are elves often depicted wearing?", answer: "Green suits and pointy hats", used: false }
+            { level: "Easy", question: "Which song and band are considered the most popular in the history of the Eurovision Song Contest?", answer: "Waterloo by ABBA (Sweden, 1974)", used: false },
+            { level: "Medium", question: "What famous music festival in the United States, held in 1969, became a symbol of the hippie era?", answer: "Woodstock", used: false },
+            { level: "Hard", question: "What musical instrument is considered the oldest in the world?", answer: "Flute", used: false }
         ]
     },
     { 
-        name: "Christmas Dinner",
+        name: "Geography",
         levels: [
-            { level: "Easy", question: "What is a traditional meat served at Christmas dinner?", answer: "Turkey", used: false },
-            { level: "Medium", question: "What dessert is associated with Christmas?", answer: "Christmas pudding", used: false },
-            { level: "Hard", question: "What is the name of the fruitcake served at Christmas?", answer: "Panettone", used: false }
+            { level: "Easy", question: "What city is the capital of Australia?", answer: "Canberra", used: false },
+            { level: "Medium", question: "Which country is the smallest in the world by area?", answer: "Vatican City", used: false },
+            { level: "Hard", question: "Which country has the largest number of neighboring countries?", answer: "China (14 neighbors)", used: false }
         ]
     },
     { 
-        name: "Holiday Movies",
+        name: "Movies",
         levels: [
-            { level: "Easy", question: "Which Christmas movie features Kevin McCallister?", answer: "Home Alone", used: false },
-            { level: "Medium", question: "What is the Grinch known for stealing?", answer: "Christmas", used: false },
-            { level: "Hard", question: "In 'It's a Wonderful Life', what does George Bailey wish for?", answer: "To never have been born", used: false }
+            { level: "Easy", question: "Which movie is considered the highest-grossing film in the history of cinema?", answer: "Avatar (2009)", used: false },
+            { level: "Medium", question: "Which movie won the Oscar for Best Picture in 2024?", answer: "Oppenheimer", used: false },
+            { level: "Hard", question: "What movie has the highest rating on IMDb in history as of 2024?", answer: "The Shawshank Redemption (1994)", used: false }
         ]
     },
     { 
-        name: "Christmas Stockings",
+        name: "Christmas",
         levels: [
-            { level: "Easy", question: "Where do people hang Christmas stockings?", answer: "Above the fireplace", used: false },
-            { level: "Medium", question: "What do people traditionally put in stockings?", answer: "Small gifts or treats", used: false },
-            { level: "Hard", question: "In which country did the tradition of stockings originate?", answer: "The Netherlands", used: false }
+            { level: "Easy", question: "What German dessert popular during the Christmas season is shaped like bread with raisins, nuts, and candied fruit?", answer: "Stollen", used: false },
+            { level: "Medium", question: "What city does the legend of St. Nicholas come from?", answer: "Myra, Lycia (modern Turkey)", used: false },
+            { level: "Hard", question: "In which country do people traditionally eat KFC fried chicken for Christmas?", answer: "Japan", used: false }
         ]
     },
     { 
-        name: "Winter Wonderland",
+        name: "Germany",
         levels: [
             { level: "Easy", question: "What is the typical color of snow?", answer: "White", used: false },
             { level: "Medium", question: "Which month marks the start of winter?", answer: "December", used: false },
@@ -117,11 +117,11 @@ const categories = [
         ]
     },
     { 
-        name: "Holiday Traditions",
+        name: "Celebrities",
         levels: [
-            { level: "Easy", question: "What do people hang above fireplaces at Christmas?", answer: "Stockings", used: false },
-            { level: "Medium", question: "Which country is credited with starting the Christmas tree tradition?", answer: "Germany", used: false },
-            { level: "Hard", question: "What is the name of the traditional Christmas log cake?", answer: "Yule Log", used: false }
+            { level: "Easy", question: "Who is the most popular person on Instagram by number of followers?", answer: "Cristiano Ronaldo", used: false },
+            { level: "Medium", question: "Which actress became famous for her role as Hermione Granger?", answer: "Emma Watson", used: false },
+            { level: "Hard", question: "Who is the world's youngest billionaire who achieved this status through her own business?", answer: "Kylie Jenner (21 years old)", used: false }
         ]
     }
 ];
@@ -217,7 +217,7 @@ function showQuestion(level) {
 // Показ відповіді
 checkAnswerButton.addEventListener('click', () => {
     if (currentQuestion) {
-        document.getElementById('correct-answer').innerText = `The correct answer is: ${currentQuestion.answer}`;
+        document.getElementById('correct-answer').innerText = ` ${currentQuestion.answer}`;
         questionScreen.classList.remove('active');
         answerScreen.classList.add('active');
     }
