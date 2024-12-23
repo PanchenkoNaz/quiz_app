@@ -31,7 +31,7 @@ const categories = [
     { 
         name: "History", 
         levels: [
-            { level: "Easy", question: "Who was the first president of the United States?", answer: "George Washington", used: false },
+            { level: "Easy", question: "Who was the first president of the United States?", translation: "Де живе Санта Клаус?", answer: "George Washington", used: false },
             { level: "Medium", question: "How many years did the Hundred Years' War last?", answer: "116 years (from 1337 to 1453)", used: false },
             { level: "Hard", question: "Which country was the first to grant women the right to vote in 1893?", answer: "New Zealand", used: false }
         ]
@@ -96,7 +96,7 @@ const categories = [
         name: "Movies",
         levels: [
             { level: "Easy", question: "Which movie is considered the highest-grossing film in the history of cinema?", answer: "Avatar (2009)", used: false },
-            { level: "Medium", question: "Which movie won the Oscar for Best Picture in 2024?", answer: "Oppenheimer", used: false },
+            { level: "Medium", question: "Which movie won the Oscar for Best Picture in 2024?  [Which movie won the Oscar for Best Picture in 2024?]",  answer: "Oppenheimer", used: false },
             { level: "Hard", question: "What movie has the highest rating on IMDb in history as of 2024?", answer: "The Shawshank Redemption (1994)", used: false }
         ]
     },
@@ -109,11 +109,11 @@ const categories = [
         ]
     },
     { 
-        name: "Germany",
+        name: "Deutschland",
         levels: [
-            { level: "Easy", question: "What is the typical color of snow?", answer: "White", used: false },
-            { level: "Medium", question: "Which month marks the start of winter?", answer: "December", used: false },
-            { level: "Hard", question: "What is the scientific term for frost?", answer: "Hoar frost", used: false }
+            { level: "Easy", question: "Which modern German car company is the world's largest car manufacturer by sales?", answer: "Volkswagen Group", used: false },
+            { level: "Medium", question: "Which architectural school founded in 1919 in Germany had a huge impact on modern design?", answer: "Bauhaus", used: false },
+            { level: "Hard", question: "Which city in Germany is the oldest?", answer: "Trier", used: false }
         ]
     },
     { 
@@ -210,6 +210,11 @@ backToCategoriesButton.addEventListener('click', () => {
 function showQuestion(level) {
     currentQuestion = level;
     document.getElementById('question-text').innerText = level.question;
+
+    // Додаємо переклад
+    const translation = level.translation || "No translation available"; // Перевіряємо наявність перекладу
+    document.getElementById('question-translation').innerText = translation;
+
     levelScreen.classList.remove('active');
     questionScreen.classList.add('active');
 }
