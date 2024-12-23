@@ -45,6 +45,7 @@ body {
 /* Заголовки */
 h1,
 h2 {
+    font-size: 3rem;
     margin-bottom: 1.8rem;
     text-align: center;
     color: #ff9800;
@@ -87,12 +88,19 @@ input {
     color: #ffffff;
 }
 
+
+
 /* Категорії */
+
+#category-screen{
+    margin-bottom: 1rem;
+}
+
 #category-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.5rem;
     max-width: 80rem;
 }
 
@@ -162,3 +170,92 @@ input {
     border-color: #1e88e5;
 }
 
+#turn-indicator{
+    color: #797979;
+    position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 1rem;
+}
+
+
+/* Поля вводу */
+input {
+    width: 100%;
+    max-width: 25rem;
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #1e88e5;
+    border-radius: 0.5rem;
+    background-color: #202020;
+    color: #ffffff;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.2);
+}
+
+input:focus {
+    outline: none;
+    border-color: #ff9800;
+}
+
+/* Текст правильної відповіді */
+#correct-answer {
+    font-size: 1.2rem;
+    color: #b3b3b3;
+    /* М'який сірий */
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    text-align: center;
+}
+
+/* Заголовок правильної відповіді */
+h2 {
+    color: #ff9800;
+    /* Помаранчевий акцент */
+    margin-bottom: 1rem;
+    text-shadow: 0.1em 0.1em 0.2em #000;
+}
+
+/* Кнопки */
+button {
+    background-color: #1e88e5;
+    color: #ffffff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.3em 0.6em rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background-color: #1565c0;
+    transform: translateY(-0.1em);
+ }  
+
+ .button-container,
+ .input-container{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;      
+    margin-top: 1.5rem;
+       
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

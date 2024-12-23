@@ -19,8 +19,10 @@
     <!-- Екран введення імен команд -->
     <div id="team-input-screen" class="screen hidden">
         <h2>Enter Team Names</h2>
-        <input type="text" id="team1-name" placeholder="Team 1 Name">
-        <input type="text" id="team2-name" placeholder="Team 2 Name">
+        <div class="input-container">
+            <input type="text" id="team1-name" placeholder="Team 1 Name">
+            <input type="text" id="team2-name" placeholder="Team 2 Name">
+        </div>
         <button id="start-game-btn">Start Game</button>
     </div>
 
@@ -58,8 +60,10 @@
     <div id="answer-screen" class="screen hidden">
         <h2>Correct Answer:</h2>
         <p id="correct-answer">The correct answer will appear here.</p>
-        <button id="correct-btn">Correct</button>
-        <button id="incorrect-btn">Incorrect</button>
+        <div id="answer-buttons" class="button-container">
+            <button id="correct-btn">Correct</button>
+            <button id="incorrect-btn">Incorrect</button>
+        </div>
     </div>
 
     <!-- Фінальний екран -->
