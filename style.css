@@ -94,14 +94,21 @@ input {
 
 #category-screen{
     margin-bottom: 1rem;
+    max-width: 120rem;
+}
+
+#category-screen h2{
+    font-size: 5rem;
+    margin-bottom: 4rem;
 }
 
 #category-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
-    max-width: 80rem;
+    gap: 2rem;
+    max-width: 120rem;
+    margin-top: 3rem;
 }
 
 .category-button {
@@ -109,9 +116,9 @@ input {
     color: #ffcc00;
     border: 1px solid #ffcc00;
     border-radius: 0.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 3rem;
     cursor: pointer;
     width: calc(25% - 1rem);
     min-width: 10rem;
@@ -119,7 +126,8 @@ input {
 }
 
 .category-button:hover {
-    background-color: #444;
+    background-color: #7c7a7a;
+    
     /* transform: scale(1.05); */
     box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
 }
@@ -137,15 +145,16 @@ input {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 80rem;
+    max-width: 120rem;
     margin-bottom: 1rem;
 }
 
 .team-score {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     text-align: center;
     flex: 1;
     padding: 0.5rem;
+    color: #767676;
 }
 
 /* Прозорі кнопки */
@@ -200,10 +209,10 @@ input:focus {
 
 /* Текст правильної відповіді */
 #correct-answer {
-    font-size: 1.2rem;
+    font-size: 3rem;
     color: #b3b3b3;
     /* М'який сірий */
-    margin-bottom: 1.5rem;
+    margin: 2rem 0;
     font-style: italic;
     text-align: center;
 }
@@ -218,11 +227,12 @@ h2 {
 
 /* Кнопки */
 button {
+    /* width: 17rem; */
     background-color: #1e88e5;
     color: #ffffff;
     border: none;
     border-radius: 0.5rem;
-    padding: 0.75rem 2rem;
+    padding: 1rem 2rem;
     font-size: 2rem;
     cursor: pointer;
     margin: 1rem;
@@ -246,14 +256,23 @@ button:hover {
 
 
 
+#question-translation{
+    font-size: 2rem;
+    color: #bababa;
+    font-style: italic;
+    margin: 2rem 0;
+}
 
+#final-results{
+    margin: 3rem;
+    display: flex;
+    font-size: 2rem;
+    gap: 2rem;
+}
 
-
-
-
-
-
-
+.final-button{
+    display: flex;
+}
 
 
 
