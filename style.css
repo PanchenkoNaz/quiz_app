@@ -98,8 +98,8 @@ input {
 }
 
 #category-screen h2{
-    font-size: 5rem;
-    margin-bottom: 4rem;
+    font-size: 4rem;
+    margin-bottom: 2rem;
 }
 
 #category-list {
@@ -108,7 +108,7 @@ input {
     justify-content: center;
     gap: 2rem;
     max-width: 120rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 
 .category-button {
@@ -188,9 +188,8 @@ input {
 }
 
 #level-list button{
-width: 15rem;
- margin: 2rem;
-    
+    width: 15rem;
+    margin: 2rem;
 }
 
 
